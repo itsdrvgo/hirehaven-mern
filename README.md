@@ -1,7 +1,7 @@
 <p align="center">
     <picture>
-        <source media="(prefers-color-scheme: dark)" srcset="https://github.com/itsdrvgo/hirehaven-mern/blob/master/www/public/logos/hirehaven_light.svg?raw=true">
-        <img src="https://github.com/itsdrvgo/hirehaven-mern/blob/master/www/public/logos/hirehaven_light.svg?raw=true" width="200" alt="HireHaven">
+        <source media="(prefers-color-scheme: dark)" srcset="https://github.com/itsdrvgo/hirehaven-mern/blob/main/www/public/logos/hirehaven_light.svg?raw=true">
+        <img src="https://github.com/itsdrvgo/hirehaven-mern/blob/main/www/public/logos/hirehaven_light.svg?raw=true" width="200" alt="HireHaven">
     </picture>
 </p>
 
@@ -28,7 +28,7 @@ thrive.
 
 <a href="https://github.com/itsdrvgo/hirehaven-mern" target="_blank">
     <p align="center">
-        <img src="https://github.com/itsdrvgo/hirehaven-mern/blob/master/www/public/og.webp?raw=true" alt="HireHaven" />
+        <img src="https://github.com/itsdrvgo/hirehaven-mern/blob/main/www/public/og.webp?raw=true" alt="HireHaven" />
     </p>
 </a>
 
