@@ -1,7 +1,7 @@
 <p align="center">
     <picture>
-        <source media="(prefers-color-scheme: dark)" srcset="https://github.com/itsdrvgo/hirehaven-mern/blob/master/www/public/logos/hirehave_light.png?raw=true">
-        <img src="https://github.com/itsdrvgo/hirehaven-mern/blob/master/www/public/logos/hirehave_light.png?raw=true" width="200" alt="HireHaven">
+        <source media="(prefers-color-scheme: dark)" srcset="https://github.com/itsdrvgo/hirehaven-mern/blob/master/www/public/logos/hirehaven_light.svg?raw=true">
+        <img src="https://github.com/itsdrvgo/hirehaven-mern/blob/master/www/public/logos/hirehaven_light.svg?raw=true" width="200" alt="HireHaven">
     </picture>
 </p>
 
