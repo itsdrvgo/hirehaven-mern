@@ -1,0 +1,1137 @@
+{
+	"info": {
+		"_postman_id": "04015425-a288-4817-a02a-88def8b9adcd",
+		"name": "HireHaven",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "35394246"
+	},
+	"item": [
+		{
+			"name": "Applications",
+			"item": [
+				{
+					"name": "getApplications",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer {{POSTER_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/api/applications?page=1&limit=10&paginated=true&jId=66cdc92a2658e0e11976f492",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"applications"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1",
+									"description": "default is '1'"
+								},
+								{
+									"key": "limit",
+									"value": "10",
+									"description": "default is '10'"
+								},
+								{
+									"key": "paginated",
+									"value": "true",
+									"description": "show as paginated data, if not provided, default is 'false'"
+								},
+								{
+									"key": "aId",
+									"value": "66cc98b89eef741ed0dec45a",
+									"description": "filter by applicant id",
+									"disabled": true
+								},
+								{
+									"key": "jId",
+									"value": "66cdc92a2658e0e11976f492",
+									"description": "filter by job id"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getApplication",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer {{SEEKER_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/api/applications/66cdd2b72dc56d844533f20f",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"applications",
+								"66cdd2b72dc56d844533f20f"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateApplication",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer {{POSTER_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"status\": \"reviewed\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/applications/66cdd2b72dc56d844533f20f",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"applications",
+								"66cdd2b72dc56d844533f20f"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "currentUser",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer {{SEEKER_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/api/auth/me",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"me"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "signUp",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"firstName\": \"Sarthak\",\r\n    \"lastName\": \"Kundu\",\r\n    \"email\": \"sarthakkundu2211@gmail.com\",\r\n    \"password\": \"Password1!\",\r\n    \"confirmPassword\": \"Password1!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/auth/signup",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"signup"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "signIn",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "// ADMIN\r\n{\r\n    \"email\": \"sarthakkundu2211@gmail.com\",\r\n    \"password\": \"Password1!\"\r\n}\r\n\r\n// POSTER\r\n// {\r\n//     \"email\": \"thedragoluca@gmail.com\",\r\n//     \"password\": \"Password1!\"\r\n// }\r\n\r\n// SEEKER\r\n// {\r\n//     \"email\": \"dragolucacodes@gmail.com\",\r\n//     \"password\": \"Password1!\"\r\n// }",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/auth/signin?type=admin",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"signin"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "admin",
+									"description": "can be 'poster' or 'admin', default is 'seeker'"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "signOut",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer {{SEEKER_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/auth/signout",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"signout"
+							],
+							"query": [
+								{
+									"key": "type",
+									"value": "poster",
+									"description": "can be 'poster' or 'admin', default is 'seeker'",
+									"disabled": true
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "verifyAccount",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer {{SEEKER_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/auth/verify-email?token=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2Y2M3MTk2NjMxM2Y5ZDNlOTg2ZTIyOCIsImlhdCI6MTcyNDY3NDQ1NSwiZXhwIjoxNzI0Njc1MzU1fQ.DbBkfow2qvVcRcJxTEEfN7efHma2ZbnHRBF9gN1quOM",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"verify-email"
+							],
+							"query": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2Y2M3MTk2NjMxM2Y5ZDNlOTg2ZTIyOCIsImlhdCI6MTcyNDY3NDQ1NSwiZXhwIjoxNzI0Njc1MzU1fQ.DbBkfow2qvVcRcJxTEEfN7efHma2ZbnHRBF9gN1quOM"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "resendVerificationEmail",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer {{SEEKER_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/auth/resend-verification-email",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"auth",
+								"resend-verification-email"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Categories",
+			"item": [
+				{
+					"name": "getCategories",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer {{SEEKER_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/api/categories",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getCategory",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer {{SEEKER_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/api/categories/66cdbdac1f02ff31e877162e",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"categories",
+								"66cdbdac1f02ff31e877162e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createCategory",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer {{ADMIN_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Engineering & Manufacturing\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/categories",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"categories"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateCategory",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer {{ADMIN_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"name\": \"Software Development\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/categories/66cdbdac1f02ff31e877162e",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"categories",
+								"66cdbdac1f02ff31e877162e"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteCategory",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer {{ADMIN_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/categories/66cdbdac1f02ff31e877162e",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"categories",
+								"66cdbdac1f02ff31e877162e"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Jobs",
+			"item": [
+				{
+					"name": "getJobs",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer {{SEEKER_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/api/jobs?page=1&limit=10&paginated=true&category=66cdbdac1f02ff31e877162e&poster=66cc97df9eef741ed0dec458&name=backend developer&type=full_time%20contract%20internship&location=remote&country=US&minSalary=60000&maxSalary=6000000&isFeatured=true&status=published",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"jobs"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1",
+									"description": "default is '1'"
+								},
+								{
+									"key": "limit",
+									"value": "10",
+									"description": "default is '10'"
+								},
+								{
+									"key": "paginated",
+									"value": "true",
+									"description": "show as paginated data, if not provided, default is 'false'"
+								},
+								{
+									"key": "category",
+									"value": "66cdbdac1f02ff31e877162e",
+									"description": "filter by specific category id"
+								},
+								{
+									"key": "poster",
+									"value": "66cc97df9eef741ed0dec458",
+									"description": "filter by specific job poster id"
+								},
+								{
+									"key": "name",
+									"value": "backend developer",
+									"description": "search by job position/name"
+								},
+								{
+									"key": "type",
+									"value": "full_time%20contract%20internship",
+									"description": "can be 'full_time' / 'freelance' / 'part_time' / 'contract' / 'internship', can be multiple, but needs to be url encoded"
+								},
+								{
+									"key": "location",
+									"value": "remote",
+									"description": "can be 'onsite' / 'hybrid' / 'remote'"
+								},
+								{
+									"key": "country",
+									"value": "US",
+									"description": "filter by country code"
+								},
+								{
+									"key": "minSalary",
+									"value": "60000",
+									"description": "the minimum salary, must be a number, default is '0' (yearly)"
+								},
+								{
+									"key": "maxSalary",
+									"value": "6000000",
+									"description": "the maximum salary, must be a number (yearly)"
+								},
+								{
+									"key": "isFeatured",
+									"value": "true",
+									"description": "show only featured jobs, if not provided, default is 'false'"
+								},
+								{
+									"key": "status",
+									"value": "published",
+									"description": "can be 'draft' / 'published', default will show all jobs"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getJob",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer {{SEEKER_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/api/jobs/66cdc92a2658e0e11976f492",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"jobs",
+								"66cdc92a2658e0e11976f492"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "createJob",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer {{POSTER_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "companyName",
+									"value": "UploadEase",
+									"type": "text"
+								},
+								{
+									"key": "companyEmail",
+									"value": "careers@uploadease.com",
+									"type": "text"
+								},
+								{
+									"key": "position",
+									"value": "Junior Backend Developer",
+									"type": "text"
+								},
+								{
+									"key": "type",
+									"value": "full_time",
+									"type": "text"
+								},
+								{
+									"key": "description",
+									"value": "We are seeking a Junior Backend Developer to join our team and help us continue to build and scale our platform.\\n\\nThis is a fantastic opportunity for an enthusiastic and motivated individual to work remotely and grow with a company that is pushing the boundaries of what's possible in file upload technology.\\n\\n**Key Responsibilities:**\\n\\n- Develop, maintain, and enhance backend services and APIs using Node.js.\\n- Collaborate with the front-end development team to integrate user-facing elements with server-side logic.\\n- Work with databases such as PostgreSQL (Supabase) to store and retrieve data efficiently.\\n- Implement real-time data handling using Mux and tRPC for smooth video and file streaming services.\\n- Manage file uploads and integrations using Uploadthing.\\n- Write clean, scalable, and maintainable code while following best practices.\\n- Troubleshoot, debug, and upgrade software.\\n- Collaborate with cross-functional teams to define, design, and ship new features.\\n- Participate in code reviews to maintain code quality and share knowledge with the team.\\n\\n**Skills and Qualifications:**\\n\\n- Bachelor’s degree in Computer Science, Engineering, or a related field, or equivalent experience.\\n- 1-2 years of experience in backend development, preferably with Node.js.\\n- Familiarity with frameworks and tools like Next.js, Mux, tRPC, Uploadthing, Supabase PostgreSQL, and authentication services.\\n- Strong understanding of RESTful API design and implementation.\\n- Basic knowledge of cloud services and deployments.\\n- Excellent problem-solving skills and attention to detail.\\n- Strong communication skills and the ability to work effectively in a remote team environment.\\n- Passionate about learning new technologies and improving existing skills.\\n\\n**What We Offer:**\\n\\n- A competitive salary of $70,000 per year.\\n- Flexible remote working environment with a team based in New York City, NY.\\n- Opportunities for professional development and career growth.\\n- Collaborative and inclusive company culture.\\n- Work with a talented team on cutting-edge technology projects.",
+									"type": "text"
+								},
+								{
+									"key": "locationType",
+									"value": "hybrid",
+									"type": "text"
+								},
+								{
+									"key": "location[country]",
+									"value": "US",
+									"type": "text"
+								},
+								{
+									"key": "location[state]",
+									"value": "NY",
+									"type": "text"
+								},
+								{
+									"key": "location[city]",
+									"value": "New York City",
+									"type": "text"
+								},
+								{
+									"key": "salary[mode]",
+									"value": "yearly",
+									"type": "text"
+								},
+								{
+									"key": "salary[amount]",
+									"value": "70000",
+									"type": "text"
+								},
+								{
+									"key": "categoryId",
+									"value": "66cdbdac1f02ff31e877162e",
+									"type": "text"
+								},
+								{
+									"key": "isFeatured",
+									"value": "false",
+									"type": "text"
+								},
+								{
+									"key": "logo",
+									"type": "file",
+									"src": "postman-cloud:///1ef646d2-51cc-44f0-a11d-4877cf33bd65"
+								},
+								{
+									"key": "isPublished",
+									"value": "false",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/jobs",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"jobs"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "applyToJob",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer {{SEEKER_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"coverLetter\": \"In my current role as a Freelance Developer, I have successfully managed over 60 diverse projects, demonstrating my ability to deliver impactful solutions tailored to individual client needs. This experience has honed my skills in client relationship management, ensuring that I provide high-quality, user-centric web applications.\\n\\nMy proficiency in React and Next.js is evident in my recent projects, such as \\\"Post It\\\" and \\\"create-ev0-app\\\", where I implemented role-based authentication, infinite page scrolling, and responsive user interfaces. Additionally, my work with \\\"Post It\\\" showcases my ability to utilize tools like tRPC, Supabase, and Drizzle ORM for efficient back-end development.\\n\\nI am particularly drawn to creativity, innovation, and collaboration. These values resonate with my approach to development, where I constantly seek to innovate and solve challenges through teamwork and cutting-edge technology. The opportunity to work on exciting projects with a talented team and the flexibility of remote work are additional benefits that align with my professional goals.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/jobs/66cdc92a2658e0e11976f492/apply",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"jobs",
+								"66cdc92a2658e0e11976f492",
+								"apply"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateJob",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer {{POSTER_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    // \"position\": \"Junior Backend Developer\",\r\n    // \"type\": \"full_time\",\r\n    // \"description\": \"We are seeking a Junior Backend Developer to join our team and help us continue to build and scale our platform.\\n\\nThis is a fantastic opportunity for an enthusiastic and motivated individual to work remotely and grow with a company that is pushing the boundaries of what's possible in file upload technology.\\n\\n**Key Responsibilities:**\\n\\n- Develop, maintain, and enhance backend services and APIs using Node.js.\\n- Collaborate with the front-end development team to integrate user-facing elements with server-side logic.\\n- Work with databases such as PostgreSQL (Supabase) to store and retrieve data efficiently.\\n- Implement real-time data handling using Mux and tRPC for smooth video and file streaming services.\\n- Manage file uploads and integrations using Uploadthing.\\n- Write clean, scalable, and maintainable code while following best practices.\\n- Troubleshoot, debug, and upgrade software.\\n- Collaborate with cross-functional teams to define, design, and ship new features.\\n- Participate in code reviews to maintain code quality and share knowledge with the team.\\n\\n**Skills and Qualifications:**\\n\\n- Bachelor’s degree in Computer Science, Engineering, or a related field, or equivalent experience.\\n- 1-2 years of experience in backend development, preferably with Node.js.\\n- Familiarity with frameworks and tools like Next.js, Mux, tRPC, Uploadthing, Supabase PostgreSQL, and authentication services.\\n- Strong understanding of RESTful API design and implementation.\\n- Basic knowledge of cloud services and deployments.\\n- Excellent problem-solving skills and attention to detail.\\n- Strong communication skills and the ability to work effectively in a remote team environment.\\n- Passionate about learning new technologies and improving existing skills.\\n\\n**What We Offer:**\\n\\n- A competitive salary of $70,000 per year.\\n- Flexible remote working environment with a team based in New York City, NY.\\n- Opportunities for professional development and career growth.\\n- Collaborative and inclusive company culture.\\n- Work with a talented team on cutting-edge technology projects.\",\r\n    // \"locationType\": \"hybrid\",\r\n    // \"location\": {\r\n    //     \"country\": \"US\",\r\n    //     \"state\": \"NY\",\r\n    //     \"city\": \"New York City\"\r\n    // },\r\n    // \"salary\": {\r\n    //     \"mode\": \"yearly\",\r\n    //     \"amount\": \"70000\"\r\n    // },\r\n    // \"status\": false,\r\n    \"isFeatured\": true,\r\n    \"isPublished\": true\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/jobs/66cdc92a2658e0e11976f492",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"jobs",
+								"66cdc92a2658e0e11976f492"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteJob",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer {{POSTER_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/jobs/66cdc92a2658e0e11976f492",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"jobs",
+								"66cdc92a2658e0e11976f492"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "getUsers",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer {{ADMIN_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/api/users?page=1&limit=10&paginated=true",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"users"
+							],
+							"query": [
+								{
+									"key": "page",
+									"value": "1",
+									"description": "default is '1'"
+								},
+								{
+									"key": "limit",
+									"value": "10",
+									"description": "default is '10'"
+								},
+								{
+									"key": "paginated",
+									"value": "true",
+									"description": "show as paginated data, if not provided, default is 'false'"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "getUser",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer {{ADMIN_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{BASE_URL}}/api/users/66cc98b89eef741ed0dec45a",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"66cc98b89eef741ed0dec45a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateUser",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer {{SEEKER_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"address\": {\r\n        \"street\": \"5, Moiradanga Road\",\r\n        \"city\": \"kolkata\",\r\n        \"state\": \"WB\",\r\n        \"country\": \"IN\",\r\n        \"zip\": \"700036\"\r\n    },\r\n    \"phone\": \"+919007163763\",\r\n    \"coverLetter\": \"In my current role as a Freelance Developer, I have successfully managed over 60 diverse projects, demonstrating my ability to deliver impactful solutions tailored to individual client needs. This experience has honed my skills in client relationship management, ensuring that I provide high-quality, user-centric web applications.\\n\\nMy proficiency in React and Next.js is evident in my recent projects, such as \\\"Post It\\\" and \\\"create-ev0-app\\\", where I implemented role-based authentication, infinite page scrolling, and responsive user interfaces. Additionally, my work with \\\"Post It\\\" showcases my ability to utilize tools like tRPC, Supabase, and Drizzle ORM for efficient back-end development.\\n\\nI am particularly drawn to creativity, innovation, and collaboration. These values resonate with my approach to development, where I constantly seek to innovate and solve challenges through teamwork and cutting-edge technology. The opportunity to work on exciting projects with a talented team and the flexibility of remote work are additional benefits that align with my professional goals.\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/users/66cc98b89eef741ed0dec45a",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"66cc98b89eef741ed0dec45a"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updatePassword",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer {{SEEKER_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"oldPassword\": \"Password1!\",\r\n    \"newPassword\": \"Password1!\",\r\n    \"confirmPassword\": \"Password1!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/users/66cc98b89eef741ed0dec45a/password",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"66cc98b89eef741ed0dec45a",
+								"password"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateRole",
+					"request": {
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer {{ADMIN_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"role\": \"SEEKER\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/users/66cc98b89eef741ed0dec45a/role",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"66cc98b89eef741ed0dec45a",
+								"role"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateAvatar",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer {{SEEKER_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "avatar",
+									"type": "file",
+									"src": "postman-cloud:///1ef63c39-1be6-4000-8c83-a41c29533dfc"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/users/66cc98b89eef741ed0dec45a/avatar",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"66cc98b89eef741ed0dec45a",
+								"avatar"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "updateResume",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer {{SEEKER_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "resume",
+									"type": "file",
+									"src": "postman-cloud:///1ef63c3d-e716-4280-844f-1cf75eb7deb8"
+								}
+							]
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/users/66cc98b89eef741ed0dec45a/resume",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"66cc98b89eef741ed0dec45a",
+								"resume"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "deleteUser",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "authorization",
+								"value": "Bearer {{SEEKER_TOKEN}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": []
+						},
+						"url": {
+							"raw": "{{BASE_URL}}/api/users/66cc98b89eef741ed0dec45a",
+							"host": [
+								"{{BASE_URL}}"
+							],
+							"path": [
+								"api",
+								"users",
+								"66cc98b89eef741ed0dec45a"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "BASE_URL",
+			"value": "http://localhost:3001"
+		},
+		{
+			"key": "SEEKER_TOKEN",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2Y2M5OGI4OWVlZjc0MWVkMGRlYzQ1YSIsImlhdCI6MTcyNDY4NTYxMCwiZXhwIjoxNzMyNDYxNjEwfQ.A0w5Ms79TQReHR0taHFRGEkDWNbpNg1OPBGhPBq8f-4",
+			"type": "string"
+		},
+		{
+			"key": "POSTER_TOKEN",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2Y2M5N2RmOWVlZjc0MWVkMGRlYzQ1OCIsImlhdCI6MTcyNDY4NTAxMSwiZXhwIjoxNzMyNDYxMDExfQ.O-bV8X41cgkEhpo8S7911OEeX4eMYt8rxut7ewd1J2I",
+			"type": "string"
+		},
+		{
+			"key": "ADMIN_TOKEN",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY2Y2M3MTk2NjMxM2Y5ZDNlOTg2ZTIyOCIsImlhdCI6MTcyNDY4NTY1OCwiZXhwIjoxNzMyNDYxNjU4fQ.PVmh_WA3RaDiiKMUnXEmWBMAcGuWUb2qgw3m4gLl6rk",
+			"type": "string"
+		}
+	]
+}

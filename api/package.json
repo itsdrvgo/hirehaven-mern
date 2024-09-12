@@ -1,0 +1,58 @@
+{
+    "name": "server",
+    "module": "server.ts",
+    "type": "module",
+    "scripts": {
+        "dev": "nodemon --exec tsx server.ts",
+        "build": "tsc -p .",
+        "start": "npm run build && node dist/server.js",
+        "dev:bun": "bun run --watch server.ts",
+        "start:bun": "bun run build && node dist/server.js",
+        "lint": "eslint . --ext .ts",
+        "lint:fix": "eslint . --ext .ts --fix",
+        "format": "prettier --write ."
+    },
+    "devDependencies": {
+        "@eslint/js": "^9.7.0",
+        "@total-typescript/tsconfig": "^1.0.4",
+        "@types/bcryptjs": "^2.4.6",
+        "@types/body-parser": "^1.19.5",
+        "@types/bun": "latest",
+        "@types/cookie-parser": "^1.4.7",
+        "@types/cors": "^2.8.17",
+        "@types/express": "^4.17.21",
+        "@types/jsonwebtoken": "^9.0.6",
+        "@types/multer": "^1.4.11",
+        "@types/nodemailer": "^6.4.15",
+        "@types/react": "^18.3.3",
+        "eslint": "^9.7.0",
+        "eslint-plugin-unused-imports": "^4.0.0",
+        "globals": "^15.8.0",
+        "prettier": "^3.3.3",
+        "tsx": "^4.16.2",
+        "typescript": "^5.5.3"
+    },
+    "peerDependencies": {
+        "typescript": "^5.5.3"
+    },
+    "dependencies": {
+        "@react-email/components": "^0.0.21",
+        "bcryptjs": "^2.4.3",
+        "body-parser": "^1.20.2",
+        "chalk": "^5.3.0",
+        "cookie-parser": "^1.4.6",
+        "cors": "^2.8.5",
+        "dotenv": "^16.4.5",
+        "express": "^4.19.2",
+        "express-rate-limit": "^7.3.1",
+        "joi": "^17.13.3",
+        "jsonwebtoken": "^9.0.2",
+        "mongoose": "^8.5.1",
+        "mongoose-aggregate-paginate-v2": "^1.1.1",
+        "multer": "^1.4.5-lts.1",
+        "nodemailer": "^6.9.14",
+        "react": "^18.3.1",
+        "typescript-eslint": "8.0.0-alpha.45",
+        "zod": "^3.23.8"
+    }
+}

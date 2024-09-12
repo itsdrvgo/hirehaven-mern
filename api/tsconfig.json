@@ -1,0 +1,8 @@
+{
+    "extends": "@total-typescript/tsconfig/tsc/no-dom/app",
+    "compilerOptions": {
+        "outDir": "dist",
+        "jsx": "react-jsx"
+    },
+    "exclude": ["node_modules", "dist", "public"]
+}

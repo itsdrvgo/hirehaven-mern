@@ -1,0 +1,20 @@
+{
+    "name": "hirehaven-mern",
+    "description": "Easiest way to find jobs and hire talents in tech",
+    "version": "1.0.0",
+    "keywords": [
+        "hirehaven",
+        "mern",
+        "itsdrvgo",
+        "itsdrvgo.me",
+        "job-posting",
+        "job-application",
+        "job-search",
+        "job-portal"
+    ],
+    "author": {
+        "name": "DRVGO",
+        "url": "https://itsdrvgo.me"
+    },
+    "license": "MIT"
+}
