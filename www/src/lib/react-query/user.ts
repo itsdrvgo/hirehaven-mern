@@ -283,7 +283,7 @@ export async function updateUserRole(
 
     const res = await axios.patch<ResponseData>(
         `${PAGES.BACKEND.BASE}${PAGES.BACKEND.API.USERS.BASE}/${userId}/role`,
-        data,
+        { role: data },
         {
             headers,
             withCredentials: true,
