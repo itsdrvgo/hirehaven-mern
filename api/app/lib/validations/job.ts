@@ -24,8 +24,8 @@ export const jobSchema = Joi.object<JobData>({
         .valid(...Object.values(LOCATION_TYPES))
         .required(),
     location: Joi.object({
-        city: Joi.string().optional().lowercase(),
-        state: Joi.string().optional(),
+        city: Joi.string().optional().lowercase().empty(""),
+        state: Joi.string().optional().empty(""),
         country: Joi.string().required(),
     }),
     salary: Joi.object({
