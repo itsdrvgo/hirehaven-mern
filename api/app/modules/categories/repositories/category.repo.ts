@@ -71,6 +71,11 @@ class CategoryRepo {
                 },
             },
             {
+                $sort: {
+                    createdAt: -1,
+                },
+            },
+            {
                 $project: {
                     updatedAt: 0,
                 },
