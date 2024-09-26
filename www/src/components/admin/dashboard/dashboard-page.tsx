@@ -116,28 +116,34 @@ export function DashboardPage() {
                     </CardHeader>
                     <CardContent>
                         <div className="space-y-4">
-                            {jobsData?.pages[0]?.docs
-                                .slice(0, 3)
-                                .map((job, index) => (
-                                    <div
-                                        key={index}
-                                        className="flex items-center"
-                                    >
-                                        <Icons.building className="mr-2 size-4 text-muted-foreground" />
-                                        <div className="ml-4 space-y-1">
-                                            <p className="text-sm font-medium leading-none">
-                                                {job.position}
-                                            </p>
-                                            <p className="text-sm text-muted-foreground">
-                                                {job.companyName} -{" "}
-                                                {format(
-                                                    new Date(job.createdAt),
-                                                    "MMM dd, yyyy"
-                                                )}
-                                            </p>
+                            {jobsData?.pages[0]?.totalDocs === 0 ? (
+                                <div className="text-sm text-muted-foreground">
+                                    No job postings available
+                                </div>
+                            ) : (
+                                jobsData?.pages[0]?.docs
+                                    .slice(0, 3)
+                                    .map((job, index) => (
+                                        <div
+                                            key={index}
+                                            className="flex items-center"
+                                        >
+                                            <Icons.building className="mr-2 size-4 text-muted-foreground" />
+                                            <div className="ml-4 space-y-1">
+                                                <p className="text-sm font-medium leading-none">
+                                                    {job.position}
+                                                </p>
+                                                <p className="text-sm text-muted-foreground">
+                                                    {job.companyName} -{" "}
+                                                    {format(
+                                                        new Date(job.createdAt),
+                                                        "MMM dd, yyyy"
+                                                    )}
+                                                </p>
+                                            </div>
                                         </div>
-                                    </div>
-                                ))}
+                                    ))
+                            )}
                         </div>
                     </CardContent>
                 </Card>
@@ -148,29 +154,37 @@ export function DashboardPage() {
                     </CardHeader>
                     <CardContent>
                         <div className="space-y-4">
-                            {ticketsData?.pages[0]?.docs
-                                .slice(0, 3)
-                                .map((ticket, index) => (
-                                    <div
-                                        key={index}
-                                        className="flex items-center"
-                                    >
-                                        <Icons.ticket className="mr-2 size-4 text-muted-foreground" />
-                                        <div className="ml-4 space-y-1">
-                                            <p className="text-sm font-medium leading-none">
-                                                {convertValueToLabel(
-                                                    ticket.query
-                                                )}
-                                            </p>
-                                            <p className="text-sm text-muted-foreground">
-                                                {format(
-                                                    new Date(ticket.createdAt),
-                                                    "MMM dd, yyyy"
-                                                )}
-                                            </p>
+                            {ticketsData?.pages[0]?.totalDocs === 0 ? (
+                                <div className="text-sm text-muted-foreground">
+                                    No tickets available
+                                </div>
+                            ) : (
+                                ticketsData?.pages[0]?.docs
+                                    .slice(0, 3)
+                                    .map((ticket, index) => (
+                                        <div
+                                            key={index}
+                                            className="flex items-center"
+                                        >
+                                            <Icons.ticket className="mr-2 size-4 text-muted-foreground" />
+                                            <div className="ml-4 space-y-1">
+                                                <p className="text-sm font-medium leading-none">
+                                                    {convertValueToLabel(
+                                                        ticket.query
+                                                    )}
+                                                </p>
+                                                <p className="text-sm text-muted-foreground">
+                                                    {format(
+                                                        new Date(
+                                                            ticket.createdAt
+                                                        ),
+                                                        "MMM dd, yyyy"
+                                                    )}
+                                                </p>
+                                            </div>
                                         </div>
-                                    </div>
-                                ))}
+                                    ))
+                            )}
                         </div>
                     </CardContent>
                 </Card>

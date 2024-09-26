@@ -98,6 +98,7 @@ export function TicketAction({ ticket }: PageProps) {
 
                     {ticket.query === "become-a-poster" && (
                         <DropdownMenuItem
+                            disabled={ticket.user.role === "poster"}
                             onClick={() => setIsUpdateRoleModalOpen(true)}
                         >
                             Make Job Poster

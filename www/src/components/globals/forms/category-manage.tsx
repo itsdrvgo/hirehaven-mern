@@ -79,14 +79,14 @@ export function CategoryManageForm({ category, setIsOpen }: PageProps) {
                         Cancel
                     </Button>
 
-                    <Button className="font-semibold" size="sm" type="submit">
-                        {category
-                            ? isUpdating
-                                ? "Updating..."
-                                : "Update"
-                            : isCreating
-                              ? "Creating..."
-                              : "Create"}
+                    <Button
+                        className="font-semibold"
+                        size="sm"
+                        type="submit"
+                        isLoading={isCreating || isUpdating}
+                        isDisabled={isCreating || isUpdating}
+                    >
+                        {category ? "Update" : "Create"}
                     </Button>
                 </DialogFooter>
             </form>
